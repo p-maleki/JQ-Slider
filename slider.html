@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> Slideshow</title>
+
+
+
+<style>
+*{
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+.slides{
+  position: absolute;
+  width: 100%;
+  top:50px;
+
+}
+
+
+</style>
+ <script src="js/jquery-1.11.3.min.js"></script>
+</head>
+
+
+<body>
+   <div id="container">
+
+        <img id="one" class="slides" src="images/slide1.jpg" />
+        <img id="two" class="slides" src="images/slide2.jpg" />
+        <img id="three" class="slides" src="images/slide4.jpg" />
+        <img id="four" class="slides" src="images/slide6.webp" />
+      
+    </div>
+   
+  <script>
+    var index = 0;
+    var   animateInterval;
+function animate(){
+        if(index == 0){
+            $("#four").fadeOut(2000);
+            $("#one").fadeIn(2000);
+        }
+        else if(index == 1){
+            $("#one").fadeOut(2000);
+            $("#two").fadeIn(2000);
+        }
+        else if(index == 2){
+            $("#two").fadeOut(2000);
+            $(" #three").fadeIn(2000);
+        }
+        else if(index == 3){
+            $("#three").fadeOut(2000);
+            $("#four").fadeIn(2000);
+        }
+  console.log("Ran!")
+        if(index == 3) {
+        index = 0;
+        }
+        else index++;
+    }
+
+    animateInterval = setInterval(animate, 2000);
+    animate();
+    
+    
+
+
+  </script>
+</body>
+  </html>

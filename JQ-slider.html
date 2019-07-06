@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JQ - Slider</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+#counter{
+	width: 800px;
+	margin: 10px auto;
+}
+#slider{
+	width: 800px;
+	height: 500px;
+	border: none;
+	margin: 0 auto;
+	overflow:hidden;
+}
+#slider ul{
+	list-style:none;
+	width: 2400px;
+}
+#slider li{
+	float:left;
+}
+#btns{
+	width: 800px;
+	margin: 10px auto;
+}
+#btns button{
+	padding: 5px 10px;
+	width: 100px;
+}
+#next{
+	float:right;
+}
+</style>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+$(document).ready(function(e) {
+	var imgWidth = $("#slider img").width(),
+			maxImg = $("#slider li").length,
+			index = 0;
+	
+	$("#counter").text((index+1)+" of " + maxImg);
+	
+	$("#next").click(function(e) {
+		if( index < maxImg-1 ){
+			index++;
+		}else{
+			index = 0;
+		}
+		$("#slider ul").animate({
+			marginLeft: -(index * imgWidth)
+		}, 600);
+		$("#counter").text((index+1)+" of " + maxImg);
+	});
+	
+	$("#prev").click(function(e) {
+		if( index > 0 ){
+			index--;
+		}else{
+			index = maxImg-1;
+		}
+		$("#slider ul").animate({
+			marginLeft: -(index * imgWidth)
+		}, 600);
+		$("#counter").text((index+1)+" of " + maxImg);
+	});
+});
+</script>
+</head>
+
+<body>
+<div id="counter"></div>
+<div id="slider">
+	<ul>
+		<li><img src="images/27.jpg" alt=""></li>
+		<li><img src="images/28.jpg" alt=""></li>
+		<li><img src="images/35.jpg" alt=""></li>
+	</ul>
+</div>
+<div id="btns">
+	<button id="prev">Previous</button>
+	<button id="next">Next</button>
+</div>
+</body>
+</html>
